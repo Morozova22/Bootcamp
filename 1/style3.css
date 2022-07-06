@@ -1,0 +1,62 @@
+body {
+    font-family: "Quicksand", sans-serif;
+    display: grid;
+    place-items: center;
+
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+    background: #e7e7ea;
+
+}
+
+.card {
+    text-align: center;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    overflow: hidden;
+    font-size: 100px;
+    box-shadow: 0 2px 4px rgba(20, 20, 20, 0.5);
+}
+
+.card2__body {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    background: orange;
+    color: white;
+}
+
+.card3__body {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    background: green;
+    color: white;
+}
+
+.card1__body {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    background: blue;
+
+}
+
+.card__footer {
+    display: flex;
+    padding: 10px;
+    margin-top: auto;
+    font-size: 20px;
+    background: white;
+   
+}
