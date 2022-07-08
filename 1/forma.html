@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Задание 2</title>
-	</head>
-	<body>
+
+<head>
+    <title>Задание 2</title>
+</head>
+
+<body>
+    <header>
         <h1>Запись на курсы по программированию</h1>
         <hr>
+    </header>
+    <section>
         <form action="#" method="post">
             <label>Имя </label>
-            <p><input type="text" placeholder="Андрей"></p>
-            <p><input type="radio" value="Java" name="tech" checked>Java
-                <input type="radio" value="C++"  name="tech">C++
-                <input type="radio" value="Pthon" name="tech" >Python
-                <input type="radio" value="PHP" name="tech">PHP
-                <input type="radio" value="JavaScript" name="tech" >JavaScript</p>
+            <p><input type="text" placeholder="Андрей" required></p>
+            <p><input type="radio" value="Java" name="tech" checked required>Java
+                <input type="radio" value="C++" name="tech" required>C++
+                <input type="radio" value="Pthon" name="tech" required>Python
+                <input type="radio" value="PHP" name="tech" required>PHP
+                <input type="radio" value="JavaScript" name="tech" required>JavaScript
+            </p>
             <label>Дополнительная информация:</label>
-            <p><textarea style="width:200px; height:70px;"placeholder="Есть опыт программирования на Java"> </textarea>></p>
+            <p><textarea style="width:200px; height:70px;"
+                    placeholder="Есть опыт программирования на Java"> </textarea>></p>
             <p><label>Секретное слово:</label></p>
-            <input type="password" ></p>
-            <p><input type="checkbox">С правилами ознакомился и согласен</p>
-            <p><button>Отправить</button>
-            <button>Очистить</button></p>
+            <input type="password" value="password" required></p>
+            <p><input type="checkbox"  value="checkbox" required>С правилами ознакомился и согласен</p>
+            <p><button type="submit">Отправить</button>
+                <button type="reset">Очистить</button>
+            </p>
         </form>
+    </section>
+    <footer>
         <hr>
         <p>Made by Anastasia</p>
-	</body>
+    </footer>
+</body>
+
 </html>
