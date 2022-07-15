@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Часть 1</title>
+    <meta charset="utf-8">
+
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="message/pop.min.css">
+    <link rel="stylesheet" href="message/pop.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <div class="layout">
+        <div class="product">
+            <div class="product__preview">
+                <a href="img/1.jpg"><img src="img/1.jpg" alt=""></a>
+                <a href="img/2.jpg"><img src="img/2.jpg" alt=""></a>
+                <a href="img/3.jpg"><img src="img/3.jpg" alt=""></a>
+            </div>
+            <div class="product__big">
+                <img src="img/1.jpg" alt="">
+            </div>
+
+            <div class="product__description">
+                <h2 class="product__title">Рубашка Medicine</h2>
+                <div class="product__categories">
+                    <a href="#">Рубашки Medicine</a>
+                    <a href="#">Все модели Medicine</a>
+                    <a href="#">Рубашки</a>
+                </div>
+
+                <div class="product__price">
+                    <div class="product__cost">
+                        <div class="product__cost-cross"><del>2 699</del></div>
+                        <div class="product__cost-current">2 499 ₽</div>
+                    </div>
+                    <div class="product__promo">
+                        <div class="product__promo-value">2 227 ₽</div>
+                        <div class="product__promo-text"> - с промокодом</div>
+                    </div>
+                </div>
+
+                <div class="product__inform">
+                    <div class="product__item">
+                        <img src="https://cdn-icons-png.flaticon.com/128/33/33281.png" alt="">
+                        В наличии в магазине<a href="#">Lamoda</a>
+                    </div>
+                    <div class="product__item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1670/1670915.png" alt="">
+                        Бесплатная доставка
+                    </div>
+                </div>
+
+                <div class="product__count">
+                    <div class="change minus min">
+                        <div>-</div>
+                    </div>
+                    <input id="count" type="text" name="productСount" value="1" disabled="">
+                    <div class="change plus">
+                        <div>+</div>
+                    </div>
+                </div>
+
+                <div class="product__buttons">
+                    <button id="shop" class="product__btn blue">Купить</button>
+                    <button class="product__btn">В избранное</button>
+                </div>
+
+                <div class="product__text">
+                    <p>Рубашка Medicine выполнена из вискозной ткани с клетчатым узором.
+                        Детали: прямой крой; отложной воротник; планка из манжеты на пуговицах; карман на груди.
+                    </p>
+                </div>
+
+                <div class="product__share">
+                    <div class="product__share-title">Поделиться:</div>
+                    <div class="product__share-list">
+                        <a href="https://vk.com/"><img src="https://cdn-icons-png.flaticon.com/128/25/25684.png"
+                                alt="VK" target="_blank"></a>
+                        <a href="https://plus.google.com/"> <img
+                                src="https://cdn-icons-png.flaticon.com/128/60/60780.png" alt="Google+"
+                                target="_blank"></a>
+                        <a href="https://www.facebook.com/"><img
+                                src="https://cdn-icons-png.flaticon.com/128/20/20837.png" alt="Facebook"
+                                target="_blank"></a>
+                        <a href="https://hca.twimg.com/"><img src="https://cdn-icons-png.flaticon.com/128/25/25660.png"
+                                alt="Twetter" target="_blank"></a>
+                    </div>
+
+                    <div class="product__share-count">
+
+                        123
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="count.js"></script>
+    <script src="gallery.js"></script>
+    <script src="message/pop.js"></script>
+    <script src="message/pop.min.js"></script>
+
+</body>
+
+</html>
