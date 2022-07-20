@@ -5,14 +5,11 @@ CREATE TABLE IF NOT EXISTS `medicine`.`Раздел` (
   `код_раздела` INT NOT NULL AUTO_INCREMENT,
   `название` VARCHAR(45) NOT NULL,
   `описание` VARCHAR(300) NOT NULL,
-  `код_каталога` INT NOT NULL,
-  `количество_товара` INT NOT NULL,
-  `заголовок` VARCHAR(45) NULL,
   PRIMARY KEY (`код_раздела`));
 
 
 -- -----------------------------------------------------
---  Таблица Товар
+-- Таблица Товар
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `medicine`.`Товар` (
   `код_товара` INT NOT NULL AUTO_INCREMENT,
@@ -21,7 +18,6 @@ CREATE TABLE IF NOT EXISTS `medicine`.`Товар` (
   `цена_без_скидки` DECIMAL(10,2) NOT NULL,
   `цена_по_промокоду` DECIMAL(10,2) NOT NULL,
   `описание` VARCHAR(300) NOT NULL,
-  `заголовок` VARCHAR(45) NULL,
   PRIMARY KEY (`код_товара`));
 
 
@@ -47,11 +43,12 @@ CREATE TABLE IF NOT EXISTS `medicine`.`Раздел_has_Товар` (
 
 
 -- -----------------------------------------------------
---  Таблица Картинка
+-- Таблица Картинка
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `medicine`.`Картинка` (
   `код_картинки` INT NOT NULL AUTO_INCREMENT,
   `адрес_картинки` VARCHAR(255) NOT NULL,
+  `alt` VARCHAR(45) NOT NULL,
   `код_товара` INT NOT NULL,
   PRIMARY KEY (`код_картинки`),
   INDEX `Картинка_Товар` (`код_товара`),
@@ -60,5 +57,3 @@ CREATE TABLE IF NOT EXISTS `medicine`.`Картинка` (
     REFERENCES `medicine`.`Товар` (`код_товара`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
-
-
