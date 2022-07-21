@@ -1,3 +1,8 @@
+CREATE DATABASE IF NOT EXISTS medicine;
+
+USE medicine;
+
+
 -- -----------------------------------------------------
 -- Таблица Раздел
 -- -----------------------------------------------------
@@ -6,7 +11,6 @@ CREATE TABLE IF NOT EXISTS `medicine`.`Раздел` (
   `название` VARCHAR(45) NOT NULL,
   `описание` VARCHAR(300) NOT NULL,
   PRIMARY KEY (`код_раздела`));
-
 
 -- -----------------------------------------------------
 -- Таблица Товар
@@ -22,11 +26,21 @@ CREATE TABLE IF NOT EXISTS `medicine`.`Товар` (
 
 
 -- -----------------------------------------------------
+-- Таблица Картинка
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `medicine`.`Картинка` (
+  `код_картинки` INT NOT NULL AUTO_INCREMENT,
+  `адрес_картинки` VARCHAR(255) NOT NULL,
+  `alt` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`код_картинки`));
+
+-- -----------------------------------------------------
 -- Промежуточная таблица Раздел-Товар
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `medicine`.`Раздел_has_Товар` (
   `код_раздела` INT NOT NULL,
   `код_товара` INT NOT NULL,
+  `основной_раздел` TINYINT NOT NULL,
   PRIMARY KEY (`код_раздела`, `код_товара`),
   INDEX `Раздел_has_Товар_Товар` (`код_товара`),
   INDEX `Раздел_has_Товар_Раздел` (`код_раздела`),
@@ -43,17 +57,23 @@ CREATE TABLE IF NOT EXISTS `medicine`.`Раздел_has_Товар` (
 
 
 -- -----------------------------------------------------
--- Таблица Картинка
+-- Промежуточная таблица Товар-Картинка
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `medicine`.`Картинка` (
-  `код_картинки` INT NOT NULL AUTO_INCREMENT,
-  `адрес_картинки` VARCHAR(255) NOT NULL,
-  `alt` VARCHAR(45) NOT NULL,
+CREATE TABLE IF NOT EXISTS `medicine`.`Товар_has_Картинка` (
   `код_товара` INT NOT NULL,
-  PRIMARY KEY (`код_картинки`),
-  INDEX `Картинка_Товар` (`код_товара`),
-  CONSTRAINT `Картинка_Товар`
+  `код_картинки` INT NOT NULL,
+  `главная_картинка` TINYINT NOT NULL,
+  PRIMARY KEY (`код_товара`, `код_картинки`),
+  INDEX `Товар_has_Картинка_Картинка` (`код_картинки`),
+  INDEX `Товар_has_Картинка_Товар` (`код_товара`),
+  CONSTRAINT `Товар_has_Картинка_Товар`
     FOREIGN KEY (`код_товара`)
     REFERENCES `medicine`.`Товар` (`код_товара`)
     ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `Товар_has_Картинка_Картинка`
+    FOREIGN KEY (`код_картинки`)
+    REFERENCES `medicine`.`Картинка` (`код_картинки`)
+    ON DELETE CASCADE
     ON UPDATE CASCADE);
+
