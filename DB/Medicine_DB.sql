@@ -6,74 +6,75 @@ USE medicine;
 -- -----------------------------------------------------
 -- Таблица Раздел
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `medicine`.`Раздел` (
-  `код_раздела` INT NOT NULL AUTO_INCREMENT,
-  `название` VARCHAR(45) NOT NULL,
-  `описание` VARCHAR(300) NOT NULL,
-  PRIMARY KEY (`код_раздела`));
+CREATE TABLE IF NOT EXISTS `medicine`.`Section` (
+  `id_section` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(300) NOT NULL,
+  PRIMARY KEY (`id_section`));
 
 -- -----------------------------------------------------
 -- Таблица Товар
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `medicine`.`Товар` (
-  `код_товара` INT NOT NULL AUTO_INCREMENT,
-  `название` VARCHAR(45) NOT NULL,
-  `цена` DECIMAL(10,2) NOT NULL,
-  `цена_без_скидки` DECIMAL(10,2) NOT NULL,
-  `цена_по_промокоду` DECIMAL(10,2) NOT NULL,
-  `описание` VARCHAR(300) NOT NULL,
-  PRIMARY KEY (`код_товара`));
-
+CREATE TABLE IF NOT EXISTS `medicine`.`Product` (
+  `id_product` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `price` DECIMAL(10,2) NOT NULL,
+  `price_without_discount` DECIMAL(10,2) NOT NULL,
+  `price_promocode` DECIMAL(10,2) NOT NULL,
+  `description` VARCHAR(300) NOT NULL,
+  `visibility` TINYINT NOT NULL,
+  `main_section` TINYINT NULL,
+  `main_picture` TINYINT NULL,
+  PRIMARY KEY (`id_product`));
 
 -- -----------------------------------------------------
 -- Таблица Картинка
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `medicine`.`Картинка` (
-  `код_картинки` INT NOT NULL AUTO_INCREMENT,
-  `адрес_картинки` VARCHAR(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS `medicine`.`Picture` (
+  `id_picture` INT NOT NULL AUTO_INCREMENT,
+  `url` VARCHAR(255) NOT NULL,
   `alt` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`код_картинки`));
+  PRIMARY KEY (`id_picture`));
 
 -- -----------------------------------------------------
--- Промежуточная таблица Раздел-Товар
+-- Промежуточная таблица Картинка-Товар
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `medicine`.`Раздел_has_Товар` (
-  `код_раздела` INT NOT NULL,
-  `код_товара` INT NOT NULL,
-  `основной_раздел` TINYINT NOT NULL,
-  PRIMARY KEY (`код_раздела`, `код_товара`),
-  INDEX `Раздел_has_Товар_Товар` (`код_товара`),
-  INDEX `Раздел_has_Товар_Раздел` (`код_раздела`),
-  CONSTRAINT `Раздел_has_Товар_Раздел`
-    FOREIGN KEY (`код_раздела`)
-    REFERENCES `medicine`.`Раздел` (`код_раздела`)
+CREATE TABLE IF NOT EXISTS `medicine`.`Picture_has_Product` (
+  `id_picture` INT NOT NULL,
+  `id_product` INT NOT NULL,
+  PRIMARY KEY (`id_picture`, `id_product`),
+  INDEX `Picture_has_Product_Product` (`id_product`),
+  INDEX `Picture_has_Product_Picture` (`id_picture`),
+  CONSTRAINT `Picture_has_Product_Picture`
+    FOREIGN KEY (`id_picture`)
+    REFERENCES `medicine`.`Picture` (`id_picture`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
-  CONSTRAINT `Раздел_has_Товар_Товар`
-    FOREIGN KEY (`код_товара`)
-    REFERENCES `medicine`.`Товар` (`код_товара`)
+  CONSTRAINT `Picture_has_Product_Product`
+    FOREIGN KEY (`id_product`)
+    REFERENCES `medicine`.`Product` (`id_product`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+-- -----------------------------------------------------
+-- Промежуточная таблица Товар-Раздел
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `medicine`.`Product_has_Section` (
+  `id_product` INT NOT NULL,
+  `id_section` INT NOT NULL,
+  PRIMARY KEY (`id_product`, `id_section`),
+  INDEX `Product_has_Section_Section` (`id_section`),
+  INDEX `Product_has_Section_Product` (`id_product`),
+  CONSTRAINT `Product_has_Section_Product`
+    FOREIGN KEY (`id_product`)
+    REFERENCES `medicine`.`Product` (`id_product`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `Product_has_Section_Section`
+    FOREIGN KEY (`id_section`)
+    REFERENCES `medicine`.`Section` (`id_section`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 
 
--- -----------------------------------------------------
--- Промежуточная таблица Товар-Картинка
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `medicine`.`Товар_has_Картинка` (
-  `код_товара` INT NOT NULL,
-  `код_картинки` INT NOT NULL,
-  `главная_картинка` TINYINT NOT NULL,
-  PRIMARY KEY (`код_товара`, `код_картинки`),
-  INDEX `Товар_has_Картинка_Картинка` (`код_картинки`),
-  INDEX `Товар_has_Картинка_Товар` (`код_товара`),
-  CONSTRAINT `Товар_has_Картинка_Товар`
-    FOREIGN KEY (`код_товара`)
-    REFERENCES `medicine`.`Товар` (`код_товара`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `Товар_has_Картинка_Картинка`
-    FOREIGN KEY (`код_картинки`)
-    REFERENCES `medicine`.`Картинка` (`код_картинки`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE);
 
