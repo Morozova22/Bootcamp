@@ -1,6 +1,6 @@
 
 
-INSERT INTO `picture` (`id_picture`, `url`, `alt`) VALUES
+INSERT INTO `Picture` (`id_picture`, `url`, `alt`) VALUES
 (1, 'https://images.wbstatic.net/c516x688/new/21270000/21271391-1.jpg', 'Блузка офисная'),
 (2, 'https://cs1.livemaster.ru/storage/84/9f/68aa28ab71884c07e63ed2a1c30k--odezhda-rubashka-belaya-s-pyshnymi-rukavami.jpg', 'Рубашка оверсайз'),
 (3, 'https://images.wbstatic.net/c516x688/new/42130000/42132865-1.jpg', 'Вельветовая рубашка'),
@@ -42,7 +42,7 @@ INSERT INTO `picture` (`id_picture`, `url`, `alt`) VALUES
 
 
 
-INSERT INTO `picture_has_product` (`id_picture`, `id_product`) VALUES
+INSERT INTO `Picture_has_Product` (`id_picture`, `id_product`) VALUES
 (1, 1),
 (2, 2),
 (3, 3),
@@ -84,7 +84,7 @@ INSERT INTO `picture_has_product` (`id_picture`, `id_product`) VALUES
 
 
 
-INSERT INTO `product` (`id_product`, `name`, `price`, `price_without_discount`, `price_promocode`, `description`, `visibility`, `main_section`, `main_picture`) VALUES
+INSERT INTO `Product` (`id_product`, `name`, `price`, `price_without_discount`, `price_promocode`, `description`, `visibility`, `main_section`, `main_picture`) VALUES
 (1, ' Блузка офисная', '1399.00', '1999.00', '1199.00', 'Простая базовая блузка топ, musthave в женском гардеробе. Незаменимая вещь для создания капсулы на сезон, идеально подойдет как самостоятельный верх, так и под жакет или кардиган, такая блузка простого фасона легко впишется как в строго официальный дресс-код, так и в более демократичный образ.', 1, 1, 1),
 (2, 'Рубашка оверсайз', '1463.00', '1790.00', '1353.00', 'Женская рубашка. Рубашка из качественного плотного хлопка в стиле OVERSIZE. Тонкий длинноволокнистый хлопок особенно прочный, отлично пропускает воздух и впитывает влагу, что делает его идеальным выбором для любого гардероба. ', 1, 1, 1),
 (3, 'Life in StyIe', '1430.00', '1799.00', '1450.00', 'Рубашки вельвет это один из модных, стильных трендов этого сезона! Наша красивая, праздничная, нарядная, классическая, плотная рубашка в стиле **oversize** подойдет на большие размеры, для беременных и кормящих мам, в офис, на прогулку, девочкам подросткам, в школу.', 1, 1, 1),
@@ -127,7 +127,7 @@ INSERT INTO `product` (`id_product`, `name`, `price`, `price_without_discount`, 
 
 
 
-INSERT INTO `product_has_section` (`id_product`, `id_section`) VALUES
+INSERT INTO `Product_has_Section` (`id_product`, `id_section`) VALUES
 (1, 1),
 (2, 1),
 (3, 1),
@@ -184,7 +184,7 @@ INSERT INTO `product_has_section` (`id_product`, `id_section`) VALUES
 
 
 
-INSERT INTO `section` (`id_section`, `name`, `description`) VALUES
+INSERT INTO `Section` (`id_section`, `name`, `description`) VALUES
 (1, 'Рубашки', 'Блузки и рубашки '),
 (2, 'Брюки', 'Брюки'),
 (3, 'Джинсы', 'Джинсы'),
