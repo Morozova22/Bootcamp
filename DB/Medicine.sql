@@ -108,7 +108,7 @@ CREATE TABLE `Product` (
   `price` decimal(10,2) NOT NULL,
   `price_without_discount` decimal(10,2) NOT NULL,
   `price_promocode` decimal(10,2) NOT NULL,
-  `description` varchar(300) NOT NULL,
+  `description` varchar(500) NOT NULL,
   `visibility` tinyint NOT NULL,
   `main_section` tinyint DEFAULT NULL,
   `main_picture` tinyint DEFAULT NULL
@@ -224,7 +224,7 @@ INSERT INTO `Product_has_Section` (`id_product`, `id_section`) VALUES
 CREATE TABLE `Section` (
   `id_section` int NOT NULL,
   `name` varchar(45) NOT NULL,
-  `description` varchar(300) NOT NULL
+  `description` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
